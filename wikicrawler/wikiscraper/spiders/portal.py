@@ -13,11 +13,15 @@ class PortalSpider(CrawlSpider):
     allowed_domains = ['new.wikipedia.org']
     start_urls = ['https://new.wikipedia.org/wiki/%E0%A4%AE%E0%A5%82_%E0%A4%AA%E0%A5%8C']
 
-    # uses a LinkExtractor to find links to other pages within the same domain 
-    rules = [Rule(LinkExtractor(allow='https://new.wikipedia.org/wiki/'), callback='parse_info', follow=False)]
+    # uses a LinkExtractor to find links to other pages within the same domain
+    # and in the 1st, 3rd, and 4th table in <div class="mw-parser-output">
+    rules = (
+        Rule(LinkExtractor(allow=r'https://new.wikipedia.org/wiki/', 
+                           restrict_xpaths=['//div[3]//div[3]//table[1]', '//div[3]//div[3]//table[3]', '//div[3]//div[3]//table[4]']), 
+                           callback='parse_info', follow=False),    
+    )
 
     # parses the response, ignores page if it has already been visited,
-    # ignores page with 
     # and saves url to json file
     def parse_info(self, response):
         item = PortalItem()

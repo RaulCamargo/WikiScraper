@@ -3,3 +3,6 @@ env/
 
 # Scrapy stuff:
 .scrapy
+
+# output files
+*.csv
