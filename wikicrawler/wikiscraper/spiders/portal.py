@@ -10,8 +10,11 @@ class PortalSpider(CrawlSpider):
     start_urls = ['https://new.wikipedia.org/wiki/%E0%A4%AE%E0%A5%82_%E0%A4%AA%E0%A5%8C']
 
     # rules to only follow links in /wiki/ directory
-    rules = (Rule(LinkExtractor(allow=('/wiki/')), callback='parse_item', follow=True),)
-
+    # and ignore URLs with latin script
+    rules = (
+        Rule(LinkExtractor(allow=('/wiki/'), deny=('RecentChanges', 'Search', 'MyContributions', 'MyTalk', 'WhatLinksHere', 'SpecialPages', 'BAnand', 'Statistics')), callback='parse_item', follow=True),
+    )
+    
     # parse the page and save the date last modified,
     # save the url,
     # save the title,
@@ -25,7 +28,7 @@ class PortalSpider(CrawlSpider):
                     'title': response.css('h1#firstHeading::text').get(),
                     'text': response.css('div.mw-parser-output p::text').getall()[0]
                 }
-   
+    
     # print response.title to console
     def parse(self, response):
         print(response.title)

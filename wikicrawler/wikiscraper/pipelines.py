@@ -11,3 +11,11 @@ from itemadapter import ItemAdapter
 class WikiscraperPipeline:
     def process_item(self, item, spider):
         return item
+
+# Remove a "Last edited on " and everything after "," from the text of each date item
+# class DatePipeline:
+#     def process_item(self, item, spider):
+#         item['date'] = item['date'].split(',')[0].split('Last edited on ')[1]
+#         return item
+    
+    
