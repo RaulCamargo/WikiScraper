@@ -91,3 +91,12 @@ AUTOTHROTTLE_ENABLED = True
 REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 FEED_EXPORT_ENCODING = "utf-8"
+
+# Save output to csv file
+FEEDS = {
+    'output.csv': {
+        'format': 'csv',
+        'encoding': 'utf8',
+        'overwrite': True,
+    }
+}

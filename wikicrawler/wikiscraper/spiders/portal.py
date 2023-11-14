@@ -12,7 +12,7 @@ class PortalSpider(CrawlSpider):
     # rules to only follow links in /wiki/ directory
     # and ignore URLs with latin script
     rules = (
-        Rule(LinkExtractor(allow=('/wiki/'), deny=('RecentChanges', 'Search', 'MyContributions', 'MyTalk', 'WhatLinksHere', 'SpecialPages', 'BAnand', 'Statistics')), callback='parse_item', follow=True),
+        Rule(LinkExtractor(allow=('/wiki/[\u0900-\u097F]',)), process_links='filter_links', callback='parse_item', follow=True),
     )
     
     # parse the page and save the date last modified,
@@ -29,8 +29,15 @@ class PortalSpider(CrawlSpider):
                     'text': response.css('div.mw-parser-output p::text').getall()[0]
                 }
     
+    # filter out links with latin script
+    def filter_links(self, links):
+        deny_pattern = '/wiki/[a-zA-Z]'
+        return [link for link in links if deny_pattern not in link.url]
+    
     # print response.title to console
     def parse(self, response):
         print(response.title)
 
     
+    
+
