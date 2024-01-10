@@ -1,0 +1,9 @@
+List of URLs which should be ignored during crawl
+
+Any URL that has already been visited
+Any URL that has latin script in the path after .../wiki/
+Any URL in the header (<div class="vector-header-container"> ... </div>)
+Any URL in the titlebar (<header class="mw-body-header vector-page-titlebar">...</header>)
+Any URL in teh toolbar (<div class="vector-page-toolbar">...</div>)
+Any URL in a language dropdown (<div id="p-lang-btn" class="vector-dropdown mw-portlet mw-portlet-lang">...</div>)
+Any URL in the footer (<div class="mw-footer-container"> ... </div>)
