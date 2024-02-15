@@ -50,9 +50,9 @@ DOWNLOAD_DELAY = 1
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-DOWNLOADER_MIDDLEWARES = {
-  'wikiscraper.project_middleware.latin_filter.LatinFilterMiddleware': 543,
-}
+# DOWNLOADER_MIDDLEWARES = {
+#   'wikiscraper.project_middleware.latin_filter.LatinFilterMiddleware': 543,
+# }
 
 
 # Enable or disable extensions
@@ -98,7 +98,7 @@ FEED_EXPORT_ENCODING = "utf-8"
 
 # Save output to csv file
 FEEDS = {
-    'output.csv': {
+    'wiki_output.csv': {
         'format': 'csv',
         'encoding': 'utf8',
         'overwrite': True,
