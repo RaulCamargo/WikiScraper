@@ -41,11 +41,17 @@ class PortalSpider(CrawlSpider):
     def parse_item(self, response):
         allowed_section_selector = 'div#mw-content-text.mw-body-content'  # CSS selector for the allowed section
 
-        if (response.css(allowed_section_selector)):
+        # Check if there is text in the article and if so, yield the article
+
+        if (response.css('div.mw-parser-output p::text').getall() == []):
+            pass
+        
+        elif (response.css(allowed_section_selector)):
             yield {
                 'date': response.css('li#footer-info-lastmod::text').get(),
                 'url': response.url,
                 'title': response.css('span.mw-page-title-main::text').get(),
                 'text': response.css('div.mw-parser-output p::text').getall()[0]
-            }
+                }
+            
     
