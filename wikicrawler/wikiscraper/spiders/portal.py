@@ -42,10 +42,10 @@ class PortalSpider(CrawlSpider):
         allowed_section_selector = 'div#mw-content-text.mw-body-content'  # CSS selector for the allowed section
 
         # Check if there is text in the article and if so, yield the article
-
         if (response.css('div.mw-parser-output p::text').getall() == []):
             pass
         
+
         elif (response.css(allowed_section_selector)):
             yield {
                 'date': response.css('li#footer-info-lastmod::text').get(),
