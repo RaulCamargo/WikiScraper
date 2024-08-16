@@ -14,16 +14,16 @@ class WikiscraperPipeline:
 
 # Check if date item is empty
 # Remove a "Last edited on " and everything after "," from the text of each date item
-class DatePipeline:
-    def process_item(self, item, spider):
-        # Check if date item is empty or empty string
-        if item['date'] == None or item['date'] == '':
-            item['date'] = 'No date found'
-        else: 
-            # Remove everything after "," from the text of each date item
-            item['date'] = item['date'].split(',')[0]
-            # Remove "Last edited on " from the text of each date item
-            item['date'] = item['date'].split(' ')[-3:]
+# class DatePipeline:
+#     def process_item(self, item, spider):
+#         # Check if date item is empty or empty string
+#         if item['date'] == None or item['date'] == '':
+#             item['date'] = 'No date found'
+#         else: 
+#             # Remove everything after "," from the text of each date item
+#             item['date'] = item['date'].split(',')[0]
+#             # Remove "Last edited on " from the text of each date item
+#             item['date'] = ' '.join(item['date'].split(' ')[-3:])
             
-        return item
+#         return item
 

@@ -11,5 +11,9 @@ class WikiscraperItem(scrapy.Item):
     # name = scrapy.Field()
     pass
 
-class PortalItem(scrapy.Item):
-    url = scrapy.Field()
+# Class that extends scrapy.Item. Will be used to store the date, title, text, and URL of the article.
+class ArticleItem(scrapy.Item):
+    date = scrapy.Field()
+#     title = scrapy.Field()
+#     text = scrapy.Field()
+#     url = scrapy.Field()

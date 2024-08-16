@@ -51,7 +51,7 @@ DOWNLOAD_DELAY = 1
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 # DOWNLOADER_MIDDLEWARES = {
-#   'wikiscraper.project_middleware.latin_filter.LatinFilterMiddleware': 543,
+#   "wikiscraper.middlewares.WikiscraperDownloaderMiddleware": 543,
 # }
 
 
@@ -66,7 +66,7 @@ DOWNLOAD_DELAY = 1
 ITEM_PIPELINES = {
   "wikiscraper.pipelines.WikiscraperPipeline": 300,
     
-  "wikiscraper.pipelines.DatePipeline": 400,
+  # "wikiscraper.pipelines.DatePipeline": 400,
 }
 
 
